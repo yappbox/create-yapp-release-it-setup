@@ -30,21 +30,7 @@ When reviewing merged PR's the labels to be used are:
 
 Once the prep work is completed, the actual release is straight forward:
 
-* First ensure that you have `release-it` installed globally, generally done by
-  using one of the following commands:
-
-```
-# using https://volta.sh
-volta install release-it
-
-# using Yarn
-yarn global add release-it
-
-# using npm
-npm install --global release-it
-```
-
-* Second, ensure that you have installed your projects dependencies:
+* First, ensure that you have installed your projects dependencies:
 
 ```
 {{INSTALL_DEPENDENCIES}}
@@ -57,7 +43,7 @@ npm install --global release-it
 
 ```
 export GITHUB_AUTH="f941e0..."
-release-it
+yarn run release
 ```
 
 [release-it](https://github.com/release-it/release-it/) manages the actual
@@ -65,3 +51,17 @@ release process. It will prompt you to to choose the version number after which
 you will have the chance to hand tweak the changelog to be used (for the
 `CHANGELOG.md` and GitHub release), then `release-it` continues on to tagging,
 pushing the tag and commits, etc.
+
+## Deployments & Rollbacks
+
+QA deployments happen automatically by Circle CI when pull requests are merged into the master branch.
+
+To deploy to production, use the above release process to create a new tag. The deployment will happen automatically by Circle CI.
+
+To rollback to an old build:
+
+```sh
+ember deploy:list prod
+// find appropriate deploy revision
+ember deploy:activate prod --revision=6ae851785b22e6a615684f8d4a4e0e47
+```

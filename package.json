@@ -1,13 +1,13 @@
 {
-  "name": "create-rwjblue-release-it-setup",
+  "name": "create-yapp-release-it-setup",
   "version": "2.8.0",
-  "description": "Simple npm init / yarn create bin package to add release-it setup used by rwjblue",
+  "description": "Simple npm init / yarn create bin package to add release-it setup used by yapp",
   "keywords": [],
-  "repository": "https://github.com/rwjblue/create-rwjblue-release-it-setup",
+  "repository": "https://github.com/yappbox/create-yapp-release-it-setup",
   "license": "MIT",
   "author": "Robert Jackson <me@rwjblue.com>",
   "main": "index.js",
-  "bin": "bin/rwjblue-release-it-setup.js",
+  "bin": "bin/yapp-release-it-setup.js",
   "files": [
     "bin/",
     "index.js",
@@ -16,8 +16,7 @@
   ],
   "scripts": {
     "lint:js": "eslint .",
-    "release": "release-it",
-    "test": "jest"
+    "release": "release-it"
   },
   "dependencies": {
     "execa": "^4.0.1",
@@ -37,28 +36,12 @@
     "jest": "^26.0.1",
     "prettier": "^2.0.5",
     "release-it": "^13.6.0",
-    "release-it-lerna-changelog": "^2.3.0",
-    "release-it-yarn-workspaces": "^1.4.0"
+    "release-it-lerna-changelog": "^2.3.0"
   },
   "engines": {
     "node": ">= 10"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  },
-  "release-it": {
-    "plugins": {
-      "release-it-lerna-changelog": {
-        "infile": "CHANGELOG.md",
-        "launchEditor": true
-      }
-    },
-    "git": {
-      "tagName": "v${version}"
-    },
-    "github": {
-      "release": true,
-      "tokenRef": "GITHUB_AUTH"
-    }
   }
 }
