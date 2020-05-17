@@ -118,6 +118,9 @@ async function updatePackageJSON() {
     );
   }
 
+  delete pkg.devDependencies['ember-cli-release'];
+  delete pkg.devDependencies['ember-cli-release-tag'];
+
   let releaseItConfig = pkg['release-it'] || {};
   pkg['release-it'] = releaseItConfig;
 
@@ -154,6 +157,9 @@ async function updatePackageJSON() {
 
   pkg.publishConfig = pkg.publishConfig || {};
   pkg.publishConfig.registry = pkg.publishConfig.registry || 'https://registry.npmjs.org';
+
+  pkg.scripts = pkg.scripts || {};
+  pkg.scripts.release = pkg.scripts.release || 'release-it';
 
   let sortedPkg = sortPackageJson(pkg);
   let updatedContents = JSON.stringify(sortedPkg, null, 2);
@@ -228,7 +234,7 @@ async function main() {
     if (!fs.existsSync('package.json')) {
       /* eslint-disable-next-line no-console */
       console.error(
-        "create-rwjblue-release-it-setup should be ran from within an existing npm package's root directory"
+        "create-yapp-release-it-setup should be ran from within an existing npm package's root directory"
       );
       process.exitCode = 1;
       return;
