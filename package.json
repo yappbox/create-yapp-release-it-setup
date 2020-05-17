@@ -1,6 +1,6 @@
 {
   "name": "create-yapp-release-it-setup",
-  "version": "2.8.0",
+  "version": "2.8.1",
   "description": "Simple npm init / yarn create bin package to add release-it setup used by yapp",
   "keywords": [],
   "repository": "https://github.com/yappbox/create-yapp-release-it-setup",
